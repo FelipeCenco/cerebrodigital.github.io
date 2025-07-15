@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mi Empresa - Contacto</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <script>
+        function validarFormulario(event) {
+            event.preventDefault();
+            const nombre = document.getElementById('nombre').value.trim();
+            const correo = document.getElementById('correo').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+
+            const regexNombre = /^[a-zA-Z\s]+$/;
+            const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!regexNombre.test(nombre)) {
+                alert("Por favor, ingrese un nombre válido sin números ni caracteres especiales.");
+                return false;
+            }
+
+            if (!regexCorreo.test(correo)) {
+                alert("Por favor, ingrese un correo electrónico válido.");
+                return false;
+            }
+
+            if (mensaje.length === 0) {
+                alert("Por favor, ingrese un mensaje.");
+                return false;
+            }
+
+            alert("Formulario enviado correctamente.");
+            // Aquí podría ir el código para enviar los datos (ej. AJAX o submit real)
+            return true;
+        }
+    </script></head><body>
+    <header>
+        <img src="img/logo.png" alt="Logo Mi Empresa" class="logo" />
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                <li><a href="contacto.html" class="active">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Contacto</h1>
+        <form id="formContacto" method="POST" onsubmit="return validarFormulario(event);">
+            <label for="nombre">Nombre completo:</label><br />
+            <input type="text" id="nombre" name="nombre" required /><br /><br />
+
+            <label for="correo">Correo electrónico:</label><br />
+            <input type="email" id="correo" name="correo" required /><br /><br />
+
+            <label for="mensaje">Mensaje:</label><br />
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea><br /><br />
+
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2025 Mi Empresa - Todos los derechos reservados</p>
+    </footer></body></html>
